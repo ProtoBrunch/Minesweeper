@@ -6,14 +6,6 @@ package gibb.javamodul.minesweeper;
 public class Textausgaben {
     private String output;
 
-    void zuVieleBomben(){
-
-    }
-
-    void neueAnzahlBomben(int anzahlBomben){
-
-    }
-
     void zeigeSpielfeld(Zelle[][] spielfeld){
         int breite = spielfeld.length;
         int laenge = spielfeld[0].length;
@@ -42,24 +34,20 @@ public class Textausgaben {
             System.out.println("");
         }
         System.out.println();
-        System.out.println();
     }
 
     void zeigeEingabeaufforderung(){
-
+        output = "Geben sie nun ihren Eingabefehl ein: ";
+        System.out.print(output);
     }
 
     void zeigeFehlermeldung(){
-
+        output = "Der von ihnen eingegebene Befehl ist ungültig.";
+        System.out.println(output);
     }
 
     void zeigeSchlussmeldung(){
-
+        output = "Vielen Dank dass sie Minesweeper gespielt haben.";
     }
-
-    void kommandoEingabeUngueltig(){
-        System.out.println("Invalid command!");
-    }
-
 
 }

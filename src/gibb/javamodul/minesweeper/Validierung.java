@@ -17,20 +17,22 @@ public class Validierung {
         Matcher matcher = pattern.matcher(kommando[0]);
 
         if (kommando.length != 3) {
-            textausgaben.kommandoEingabeUngueltig();
+            textausgaben.zeigeFehlermeldung();
             return false;
         }
 
         if (kommando[0].length() != 1){
+            textausgaben.zeigeFehlermeldung();
             return false;
         }
 
         if (!matcher.find()){
+            textausgaben.zeigeFehlermeldung();
             return false;
         }
 
         if (!tryParseInt(kommando[1]) ||  !tryParseInt(kommando[2])) {
-            textausgaben.kommandoEingabeUngueltig();
+            textausgaben.zeigeFehlermeldung();
             return false;
         }
 
@@ -38,7 +40,7 @@ public class Validierung {
         int yKoordinate = Integer.parseInt(kommando[2]);
 
         if (xKoordinate < 0 || yKoordinate < 0 || xKoordinate >= spielFeldbreite || yKoordinate >= spielfeldLaenge) {
-            textausgaben.kommandoEingabeUngueltig();
+            textausgaben.zeigeFehlermeldung();
             return false;
         }
         return true;

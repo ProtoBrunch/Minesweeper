@@ -12,11 +12,13 @@ public class Minesweeper {
         textausgaben.zeigeSpielfeld(spielfeld.getSpielfeld());
         boolean playing = true;
         while(playing) {
+            textausgaben.zeigeEingabeaufforderung();
             String[] eingaben = benutzereingaben.kommandoEingabe(spielfeld);
             Kommando kommando = new Kommando(eingaben);
             playing = kommando.ausfuehren(spielfeld);
             textausgaben.zeigeSpielfeld(spielfeld.getSpielfeld());
         }
+        textausgaben.zeigeSchlussmeldung();
 
     }
 
