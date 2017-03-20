@@ -5,14 +5,17 @@ import static gibb.javamodul.minesweeper.Minesweeper.textausgaben;
 
 
 /**
+ * Diese Klasse handhabt die Validierung der Konsoleneingaben, welche sie von der "Benutzeringaben"-Klasse erhält.
+ * Jede Methode dieser Klasse soll ausschliesslich Boolean werte zurückgeben.
+ *
  * Created by Robin Berberat on 18.03.2017.
  */
 public class Validierung {
 
     boolean kommandoValidierung(String[] kommando, Spielfeld spielfeld) {
 
-        int spielFeldbreite = spielfeld.getBreite();
-        int spielfeldLaenge = spielfeld.getLaenge();
+        int spielFeldbreite = spielfeld.getSpielfeld().length;
+        int spielfeldLaenge = spielfeld.getSpielfeld()[0].length;
         Pattern pattern = Pattern.compile("([MmTt])");
         Matcher matcher = pattern.matcher(kommando[0]);
 

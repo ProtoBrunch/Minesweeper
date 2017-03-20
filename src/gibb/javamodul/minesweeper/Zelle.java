@@ -1,6 +1,11 @@
 package gibb.javamodul.minesweeper;
 
 /**
+ * Diese Klasse bildet die einzelnen Zellen im Spielfeld.
+ * Sie ist dafür verwantwortlich, die verschiedenen möglichen Zustände einer Zelle im Spielfeld zu kennen und diese mit den gegebenen Methoden verändern zu lassen.
+ *
+ *
+ *
  * Created by Robin Berberat on 18.03.2017.
  */
 public class Zelle {

@@ -4,6 +4,10 @@ import java.util.concurrent.ThreadLocalRandom;
 import static gibb.javamodul.minesweeper.Minesweeper.textausgaben;
 
 /**
+ * Diese Klasse ist für die Handhabung des Spielfelds verantwortlich.
+ * Sie erstellt, wenn aufgerufen, das Spielfeld und handhabt die Befehle zur Markierung und Aufdeckung der einzelnen Zellen.
+ *
+ *
  * Created by Robin Berberat on 18.03.2017.
  */
 public class Spielfeld {
@@ -29,9 +33,10 @@ public class Spielfeld {
     }
 
     private void spielfeldErstellung(){
-        this.spielfeldeInitialisierung();
-        this.legeBomben(anzahlBombenImFeld);
+        spielfeldeInitialisierung();
+        legeBomben(anzahlBombenImFeld);
     }
+
     private void spielfeldeInitialisierung(){
         spielfeld = new Zelle[breite][laenge];
         for (int xKoordinate = 0; xKoordinate < breite; xKoordinate++) {
@@ -68,8 +73,23 @@ public class Spielfeld {
 
         for (int ordinate: xKoordinaten) {
             for (int abszisse : yKoordinaten) {
-                if(this.prüfeObKoordinatenLegal(ordinate,abszisse)){
+                if(prüfeObKoordinatenLegal(ordinate,abszisse)){
                     spielfeld[ordinate][abszisse].alarmiereNachbarIstBombe();
+                }
+            }
+        }
+    }
+
+    private void nachbarschaftAufdecken(int xKoordinate, int yKoordinate){
+        int[] xKoordinaten = {xKoordinate-1,xKoordinate,xKoordinate+1};
+        int[] yKoordinaten = {yKoordinate-1,yKoordinate,yKoordinate+1};
+
+        for (int ordinate: xKoordinaten) {
+            for (int abszisse : yKoordinaten) {
+                if(prüfeObKoordinatenLegal(ordinate,abszisse)){
+                    if(!(spielfeld[ordinate][abszisse].getIstAufgedeckt() || spielfeld[ordinate][abszisse].getIstMarkiert())){
+                        aufdecken(ordinate,abszisse);
+                    }
                 }
             }
         }
@@ -77,7 +97,7 @@ public class Spielfeld {
 
     public boolean markieren(int xKoordinate, int yKoordinate){
         spielfeld[xKoordinate][yKoordinate].invertiereIstMarkiert();
-        textausgaben.zeigeSpielfeld(spielfeld);
+        textausgaben.zeigeSpielfeld(this);
         return true;
     }
 
@@ -94,35 +114,25 @@ public class Spielfeld {
         if(spielfeld[xKoordinate][yKoordinate].hatNachbarn()){
             return true;
         }else{
-            this.nachbarschaftAufdecken(xKoordinate,yKoordinate);
+            nachbarschaftAufdecken(xKoordinate,yKoordinate);
         }
         return true;
     }
 
-    private void nachbarschaftAufdecken(int xKoordinate, int yKoordinate){
-        int[] xKoordinaten = {xKoordinate-1,xKoordinate,xKoordinate+1};
-        int[] yKoordinaten = {yKoordinate-1,yKoordinate,yKoordinate+1};
-
-        for (int ordinate: xKoordinaten) {
-            for (int abszisse : yKoordinaten) {
-                if(this.prüfeObKoordinatenLegal(ordinate,abszisse)){
-                    if(!(spielfeld[ordinate][abszisse].getIstAufgedeckt() || spielfeld[ordinate][abszisse].getIstMarkiert())){
-                        this.aufdecken(ordinate,abszisse);
-                    }
-                }
-            }
-        }
+    public boolean istZelleAufgedeckt(int xKoordinate, int yKoordinate){
+        return spielfeld[xKoordinate][yKoordinate].getIstAufgedeckt();
     }
 
-
-
-
-    public int getBreite(){
-        return breite;
+    public boolean istZelleMarkiert(int xKoordinate, int yKoordinate){
+        return spielfeld[xKoordinate][yKoordinate].getIstMarkiert();
     }
 
-    public int getLaenge() {
-        return laenge;
+    public boolean istZelleBombe(int xKoordinate, int yKoordinate){
+        return spielfeld[xKoordinate][yKoordinate].getIstBombe();
+    }
+
+    public int anzahlBombigeNachbarnEinerZelle(int xKoordinate, int yKoordinate){
+        return spielfeld[xKoordinate][yKoordinate].getAnzahlBombenAlsNachbarn();
     }
 
     public Zelle[][] getSpielfeld() {

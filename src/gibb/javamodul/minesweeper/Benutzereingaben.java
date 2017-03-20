@@ -3,6 +3,9 @@ package gibb.javamodul.minesweeper;
 import java.util.Scanner;
 
 /**
+ * Diese Klasse ist für alle Verarbeitungen von Konsoleneingaben im Programm verantwortlich.
+ * Wenn vorgegeben, gibt diese Klasse die Eingaben weiter an eine verantwortliche Methode innerhalb der "Validieren"-Klasse.
+ *
  * Created by Robin Berberat on 18.03.2017.
  */
 class Benutzereingaben {
@@ -23,6 +26,8 @@ class Benutzereingaben {
         }
         return eingabenArray;
     }
+
+
 
 
 }

@@ -1,22 +1,18 @@
 package gibb.javamodul.minesweeper;
 
 /**
+ * Diese Klasse ist für alle Textausgaben auf der Konsole verantwortlich.
+ *
  * Created by Robin Berberat on 18.03.2017.
  */
 public class Textausgaben {
     private String output;
 
-    void zeigeSpielfeld(Zelle[][] spielfeld){
-        int breite = spielfeld.length;
-        int laenge = spielfeld[0].length;
-        int laengeVonLaenge = (Integer.toBinaryString(laenge)).length();
-
+    void zeigeSpielfeld(Spielfeld spielfeld){
+        int breite = spielfeld.getSpielfeld().length;
+        int laenge = spielfeld.getSpielfeld().length;
 
         System.out.print("    ");
-
-
-
-
         for (int spalte = 0; spalte < breite; spalte++) {
             System.out.print(" "+spalte);
         }
@@ -33,13 +29,13 @@ public class Textausgaben {
 
 
             for (int spalte = 0; spalte < breite; spalte++) {
-                if(spielfeld[spalte][zeile].getIstMarkiert()){
+                if(spielfeld.istZelleMarkiert(spalte,zeile)){
                     System.out.print(" M");
-                }else if(spielfeld[spalte][zeile].getIstAufgedeckt()){
-                    if(spielfeld[spalte][zeile].getIstBombe()){
+                }else if(spielfeld.istZelleAufgedeckt(spalte,zeile)){
+                    if(spielfeld.istZelleBombe(spalte,zeile)){
                         System.out.print(" B");
                     }else{
-                        System.out.print(" "+spielfeld[spalte][zeile].getAnzahlBombenAlsNachbarn());
+                        System.out.print(" "+spielfeld.anzahlBombigeNachbarnEinerZelle(spalte,zeile));
                     }
                 }else{
                     System.out.print("  ");

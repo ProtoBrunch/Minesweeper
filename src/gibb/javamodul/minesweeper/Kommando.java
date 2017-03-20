@@ -1,6 +1,8 @@
 package gibb.javamodul.minesweeper;
 
 /**
+ * Diese Klasse verarbeitet die validierten Benutzereingaben und gibt diese an die korrekte Methode in der "Spielfeld"-Klasse weiter.
+ *
  * Created by Robin Berberat on 19.03.2017.
  */
 public class Kommando {
