@@ -14,10 +14,9 @@ import static gibb.javamodul.minesweeper.Minesweeper.textausgaben;
  * Created by Robin Berberat on 18.03.2017.
  */
 public class Spielfeld {
-
-
     private Zelle[][] spielfeld;
     private int breite, laenge, anzahlBombenImFeld;
+
 
     Spielfeld(int breite, int laenge, int anzahlBomben){
         this.breite = breite;
@@ -34,8 +33,6 @@ public class Spielfeld {
 
         this.spielfeldErstellung();
     }
-
-
 
     private void spielfeldErstellung(){
         spielfeldeInitialisierung();
@@ -75,8 +72,6 @@ public class Spielfeld {
             }
         }
     }
-
-
 
     public boolean markiereZelle(int xKoordinate, int yKoordinate){
         spielfeld[xKoordinate][yKoordinate].invertiereIstMarkiert();
@@ -125,9 +120,6 @@ public class Spielfeld {
             return true;
         }
     }
-
-
-
 
     public boolean istZelleAufgedeckt(int xKoordinate, int yKoordinate){
         return spielfeld[xKoordinate][yKoordinate].getIstAufgedeckt();
