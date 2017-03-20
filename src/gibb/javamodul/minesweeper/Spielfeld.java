@@ -17,20 +17,20 @@ public class Spielfeld {
         this.laenge = laenge;
         this.anzahlBombenImFeld = anzahlBomben;
 
-        this.spielfeldErstellung(breite,laenge,anzahlBomben);
+        this.spielfeldErstellung();
     }
 
     Spielfeld(){
         breite = 10;
         laenge = 10;
-        anzahlBombenImFeld = 8;
+        anzahlBombenImFeld = 10;
 
-        this.spielfeldErstellung(breite,laenge,anzahlBombenImFeld);
+        this.spielfeldErstellung();
     }
 
-    private void spielfeldErstellung(int breite, int laenge, int anzahlBomben){
+    private void spielfeldErstellung(){
         this.spielfeldeInitialisierung();
-        this.legeBomben(anzahlBomben);
+        this.legeBomben(anzahlBombenImFeld);
     }
     private void spielfeldeInitialisierung(){
         spielfeld = new Zelle[breite][laenge];
@@ -75,26 +75,26 @@ public class Spielfeld {
         }
     }
 
-    public boolean markieren(int x, int y){
-        spielfeld[x][y].invertiereIstMarkiert();
+    public boolean markieren(int xKoordinate, int yKoordinate){
+        spielfeld[xKoordinate][yKoordinate].invertiereIstMarkiert();
         textausgaben.zeigeSpielfeld(spielfeld);
         return true;
     }
 
-    public boolean aufdecken(int x , int y){
-        if(spielfeld[x][y].getIstMarkiert()){
+    public boolean aufdecken(int xKoordinate , int yKoordinate){
+        if(spielfeld[xKoordinate][yKoordinate].getIstMarkiert()){
             return true;
         }
 
-        spielfeld[x][y].zelleAufdecken();
-        if(spielfeld[x][y].getIstBombe()){
+        spielfeld[xKoordinate][yKoordinate].zelleAufdecken();
+        if(spielfeld[xKoordinate][yKoordinate].getIstBombe()){
             return false;
         }
 
-        if(spielfeld[x][y].hatNachbarn()){
+        if(spielfeld[xKoordinate][yKoordinate].hatNachbarn()){
             return true;
         }else{
-            this.nachbarschaftAufdecken(x,y);
+            this.nachbarschaftAufdecken(xKoordinate,yKoordinate);
         }
         return true;
     }

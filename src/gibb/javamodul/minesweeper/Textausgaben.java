@@ -9,15 +9,29 @@ public class Textausgaben {
     void zeigeSpielfeld(Zelle[][] spielfeld){
         int breite = spielfeld.length;
         int laenge = spielfeld[0].length;
+        int laengeVonLaenge = (Integer.toBinaryString(laenge)).length();
 
 
-        System.out.print(" ");
+        System.out.print("    ");
+
+
+
+
         for (int spalte = 0; spalte < breite; spalte++) {
             System.out.print(" "+spalte);
         }
         System.out.println("");
         for (int zeile = 0; zeile < laenge; zeile++) {
-            System.out.print(zeile);
+
+            if(zeile > 9){
+            System.out.print(zeile+" |");
+            } else if(zeile > 99){
+                System.out.print(zeile+"|");
+            }else{
+            System.out.print(zeile+"  |");
+            }
+
+
             for (int spalte = 0; spalte < breite; spalte++) {
                 if(spielfeld[spalte][zeile].getIstMarkiert()){
                     System.out.print(" M");
@@ -48,6 +62,7 @@ public class Textausgaben {
 
     void zeigeSchlussmeldung(){
         output = "Vielen Dank dass sie Minesweeper gespielt haben.";
+        System.out.println(output);
     }
 
 }

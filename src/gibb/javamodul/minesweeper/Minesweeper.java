@@ -5,9 +5,10 @@ package gibb.javamodul.minesweeper;
  */
 public class Minesweeper {
     static Textausgaben textausgaben = new Textausgaben();
-    static Benutzereingaben benutzereingaben = new Benutzereingaben();
+    private static Benutzereingaben benutzereingaben = new Benutzereingaben();
 
-    Minesweeper(){
+    private Minesweeper(){
+        while(true){
         Spielfeld spielfeld = new Spielfeld();
         textausgaben.zeigeSpielfeld(spielfeld.getSpielfeld());
         boolean playing = true;
@@ -19,6 +20,7 @@ public class Minesweeper {
             textausgaben.zeigeSpielfeld(spielfeld.getSpielfeld());
         }
         textausgaben.zeigeSchlussmeldung();
+        }
 
     }
 

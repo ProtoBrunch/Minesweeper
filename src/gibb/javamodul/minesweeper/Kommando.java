@@ -9,7 +9,7 @@ public class Kommando {
     private int yKoordinate;
 
     public Kommando(String[] stringArray) {
-        this.kommandoZeichen = stringArray[0];
+        this.kommandoZeichen = stringArray[0].toUpperCase();
         this.xKoordinate = Integer.parseInt(stringArray[1]);
         this.yKoordinate = Integer.parseInt(stringArray[2]);
     }
@@ -20,10 +20,6 @@ public class Kommando {
                 return spielfeld.markieren(xKoordinate, yKoordinate);
             case "T":
                 return spielfeld.aufdecken(xKoordinate, yKoordinate);
-            case "t":
-                return spielfeld.aufdecken(xKoordinate,yKoordinate);
-            case "m":
-                return spielfeld.markieren(xKoordinate,yKoordinate);
             default:
                 return false;
         }
