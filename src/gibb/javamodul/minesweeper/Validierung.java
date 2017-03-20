@@ -6,7 +6,7 @@ import static gibb.javamodul.minesweeper.Minesweeper.textausgaben;
 
 /**
  * Diese Klasse handhabt die Validierung der Konsoleneingaben, welche sie von der "Benutzeringaben"-Klasse erhält.
- * Jede Methode dieser Klasse soll ausschliesslich Boolean werte zurückgeben.
+ * Jede Methode dieser Klasse sollte ausschliesslich Boolean werte zurückgeben.
  *
  * Created by Robin Berberat on 18.03.2017.
  */

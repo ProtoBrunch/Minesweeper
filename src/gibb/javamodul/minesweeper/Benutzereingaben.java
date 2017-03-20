@@ -16,14 +16,11 @@ class Benutzereingaben {
     private boolean eingabeValid;
 
     String[] kommandoEingabe(Spielfeld spielfeld){
-        userEingabe = scanner.nextLine();
-        eingabenArray = userEingabe.split(" ");
-        eingabeValid = validierung.kommandoValidierung(eingabenArray, spielfeld);
-        while(!eingabeValid){
+        do{
             userEingabe = scanner.nextLine();
             eingabenArray = userEingabe.split(" ");
             eingabeValid = validierung.kommandoValidierung(eingabenArray,spielfeld);
-        }
+        }while (!eingabeValid);
         return eingabenArray;
     }
 

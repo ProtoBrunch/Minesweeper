@@ -3,6 +3,8 @@ package gibb.javamodul.minesweeper;
 /**
  * Diese Klasse verarbeitet die validierten Benutzereingaben und gibt diese an die korrekte Methode in der "Spielfeld"-Klasse weiter.
  *
+ * Kommando hat einen String-Wert "kommandoZeichen" und zwei Int-Werte "xKoordinate, yKoordinate"
+ *
  * Created by Robin Berberat on 19.03.2017.
  */
 public class Kommando {
@@ -19,9 +21,9 @@ public class Kommando {
     public boolean ausfuehren(Spielfeld spielfeld) {
         switch (kommandoZeichen) {
             case "M":
-                return spielfeld.markieren(xKoordinate, yKoordinate);
+                return spielfeld.markiereZelle(xKoordinate, yKoordinate);
             case "T":
-                return spielfeld.aufdecken(xKoordinate, yKoordinate);
+                return spielfeld.deckeZelleAuf(xKoordinate, yKoordinate);
             default:
                 return false;
         }
